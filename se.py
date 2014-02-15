@@ -167,7 +167,7 @@ class WSClient():
   def recvHandshake(self, data):
     try:
       request = HTTPRequest(data)
-      if request.error_code != None or request.command != 'GET' or request.headers['sec-websocket-version'] != '13' or request.headers['upgrade'] != 'websocket':
+      if request.error_code != None or request.command != 'GET' or request.headers['sec-websocket-version'] != '13' or request.headers['upgrade'].lower() != 'websocket':
         return "HTTP/1.1 400 Bad Request\r\n\r\n"
       if request.headers['origin'] != '':
         pass
