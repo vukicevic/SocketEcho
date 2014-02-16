@@ -175,7 +175,7 @@ class WSClient():
     except e:
       return "HTTP/1.1 400 Bad Request\r\n\r\n"
 
-    self.path = request.path
+    self.path = request.path.lower()
     self.ready = True
 
     hash = base64.b64encode(hashlib.sha1('%s%s' % (key, '258EAFA5-E914-47DA-95CA-C5AB0DC85B11')).digest())
